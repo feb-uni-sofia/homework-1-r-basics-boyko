@@ -1,0 +1,463 @@
+
+R version 3.2.3 (2015-12-10) -- "Wooden Christmas-Tree"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> lintr::lint("Problem_1.R")
+Problem_1.R:3:3: style: Commented code should be removed.
+# install.packages(c('dplyr', 'ggplot2'))
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Problem_1.R:9:1: style: lines should not be more than 80 characters.
+pop <- read.csv('http://econometrics2018.s3-website.eu-central-1.amazonaws.com/data/cex16pop.csv')
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Problem_1.R:9:17: style: Only use double-quotes.
+pop <- read.csv('http://econometrics2018.s3-website.eu-central-1.amazonaws.com/data/cex16pop.csv')
+                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Problem_1.R:31:57: style: Put spaces around all infix operators.
+ggplot(data = pop, aes(x = taxes)) + geom_histogram(bins=50)
+                                                       ~^~
+Problem_1.R:33:14: style: Put spaces around all infix operators.
+sd(pop$taxes)^2
+            ~^~
+Problem_1.R:37:1: style: Variable and function names should be all lowercase.
+populationMean <- mean(pop$taxes)
+^~~~~~~~~~~~~~
+Problem_1.R:38:1: style: Variable and function names should be all lowercase.
+populationMean
+^~~~~~~~~~~~~~
+Problem_1.R:43:1: style: Variable and function names should be all lowercase.
+sampleTaxes <- sample(pop$taxes, size = 100, replace = TRUE)
+^~~~~~~~~~~
+Problem_1.R:44:6: style: Variable and function names should be all lowercase.
+head(sampleTaxes)
+     ^~~~~~~~~~~
+Problem_1.R:45:5: style: Variable and function names should be all lowercase.
+str(sampleTaxes)
+    ^~~~~~~~~~~
+Problem_1.R:51:1: style: Variable and function names should be all lowercase.
+sampleMean1 <- mean(sampleTaxes)
+^~~~~~~~~~~
+Problem_1.R:51:21: style: Variable and function names should be all lowercase.
+sampleMean1 <- mean(sampleTaxes)
+                    ^~~~~~~~~~~
+Problem_1.R:52:1: style: Variable and function names should be all lowercase.
+sampleMean1
+^~~~~~~~~~~
+Problem_1.R:62:1: style: Variable and function names should be all lowercase.
+simTaxes <- sample(pop$taxes, size = n*R, replace = TRUE)
+^~~~~~~~
+Problem_1.R:62:39: style: Put spaces around all infix operators.
+simTaxes <- sample(pop$taxes, size = n*R, replace = TRUE)
+                                     ~^~
+Problem_1.R:68:1: style: Variable and function names should be all lowercase.
+samplesData <- data.frame(
+^~~~~~~~~~~
+Problem_1.R:69:11: style: Variable and function names should be all lowercase.
+  taxes = simTaxes, 
+          ^~~~~~~~
+Problem_1.R:69:20: style: Trailing whitespace is superfluous.
+  taxes = simTaxes, 
+                   ^
+Problem_1.R:80:1: style: Variable and function names should be all lowercase.
+groupedSamples <- group_by(samplesData, r)
+^~~~~~~~~~~~~~
+Problem_1.R:80:28: style: Variable and function names should be all lowercase.
+groupedSamples <- group_by(samplesData, r)
+                           ^~~~~~~~~~~
+Problem_1.R:84:1: style: Variable and function names should be all lowercase.
+sampleMeansBySample <- summarise(groupedSamples, sampleMean = mean(taxes))
+^~~~~~~~~~~~~~~~~~~
+Problem_1.R:84:34: style: Variable and function names should be all lowercase.
+sampleMeansBySample <- summarise(groupedSamples, sampleMean = mean(taxes))
+                                 ^~~~~~~~~~~~~~
+Problem_1.R:85:5: style: Variable and function names should be all lowercase.
+str(sampleMeansBySample)
+    ^~~~~~~~~~~~~~~~~~~
+Problem_1.R:103:15: style: Variable and function names should be all lowercase.
+ggplot(data = sampleMeansBySample, aes(x = sampleMean)) + 
+              ^~~~~~~~~~~~~~~~~~~
+Problem_1.R:103:44: style: Variable and function names should be all lowercase.
+ggplot(data = sampleMeansBySample, aes(x = sampleMean)) + 
+                                           ^~~~~~~~~~
+Problem_1.R:103:58: style: Trailing whitespace is superfluous.
+ggplot(data = sampleMeansBySample, aes(x = sampleMean)) + 
+                                                         ^
+Problem_1.R:104:22: style: Put spaces around all infix operators.
+  geom_histogram(bins=50) # Draws the histograms
+                    ~^~
+Problem_1.R:123:1: style: Variable and function names should be all lowercase.
+populationStdDev <- sd(pop$taxes)
+^~~~~~~~~~~~~~~~
+Problem_1.R:130:15: style: Variable and function names should be all lowercase.
+ggplot(data = sampleMeansBySample, aes(x = sampleMean)) + 
+              ^~~~~~~~~~~~~~~~~~~
+Problem_1.R:130:44: style: Variable and function names should be all lowercase.
+ggplot(data = sampleMeansBySample, aes(x = sampleMean)) + 
+                                           ^~~~~~~~~~
+Problem_1.R:130:58: style: Trailing whitespace is superfluous.
+ggplot(data = sampleMeansBySample, aes(x = sampleMean)) + 
+                                                         ^
+Problem_1.R:131:1: style: lines should not be more than 80 characters.
+  geom_histogram(aes(y=..density..), bins=50) + # Draws the histograms with rescaled bar heights
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Problem_1.R:131:23: style: Put spaces around all infix operators.
+  geom_histogram(aes(y=..density..), bins=50) + # Draws the histograms with rescaled bar heights
+                     ~^~
+Problem_1.R:131:24: style: Words within variable and function names should be separated by '_' rather than '.'.
+  geom_histogram(aes(y=..density..), bins=50) + # Draws the histograms with rescaled bar heights
+                       ^~~~~~~~~~~
+Problem_1.R:131:42: style: Put spaces around all infix operators.
+  geom_histogram(aes(y=..density..), bins=50) + # Draws the histograms with rescaled bar heights
+                                        ~^~
+Problem_1.R:133:29: style: Trailing whitespace is superfluous.
+  stat_function(fun = dnorm, 
+                            ^
+Problem_1.R:134:1: style: lines should not be more than 80 characters.
+                args = list(mean = populationMean, sd = populationStdDev/sqrt(n)), 
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Problem_1.R:134:36: style: Variable and function names should be all lowercase.
+                args = list(mean = populationMean, sd = populationStdDev/sqrt(n)), 
+                                   ^~~~~~~~~~~~~~
+Problem_1.R:134:57: style: Variable and function names should be all lowercase.
+                args = list(mean = populationMean, sd = populationStdDev/sqrt(n)), 
+                                                        ^~~~~~~~~~~~~~~~
+Problem_1.R:134:73: style: Put spaces around all infix operators.
+                args = list(mean = populationMean, sd = populationStdDev/sqrt(n)), 
+                                                                       ~^~
+Problem_1.R:134:83: style: Trailing whitespace is superfluous.
+                args = list(mean = populationMean, sd = populationStdDev/sqrt(n)), 
+                                                                                  ^
+Problem_1.R:135:25: style: Only use double-quotes.
+                color = 'red2') + # Plot the density function
+                        ^~~~~~
+Problem_1.R:136:1: style: lines should not be more than 80 characters.
+  geom_vline(xintercept = populationMean, color = 'orange1', linetype = 2) # Draw the vertical line at the population mean
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Problem_1.R:136:27: style: Variable and function names should be all lowercase.
+  geom_vline(xintercept = populationMean, color = 'orange1', linetype = 2) # Draw the vertical line at the population mean
+                          ^~~~~~~~~~~~~~
+Problem_1.R:136:51: style: Only use double-quotes.
+  geom_vline(xintercept = populationMean, color = 'orange1', linetype = 2) # Draw the vertical line at the population mean
+                                                  ^~~~~~~~~
+Problem_1.R:146:1: style: Variable and function names should be all lowercase.
+sampleStdDev1 <- sd(sampleTaxes)
+^~~~~~~~~~~~~
+Problem_1.R:146:21: style: Variable and function names should be all lowercase.
+sampleStdDev1 <- sd(sampleTaxes)
+                    ^~~~~~~~~~~
+Problem_1.R:163:1: style: lines should not be more than 80 characters.
+c(sampleMean1 + q1*sampleStdDev1 /sqrt(100), sampleMean1 + q2*sampleStdDev1/sqrt(100))
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Problem_1.R:163:3: style: Variable and function names should be all lowercase.
+c(sampleMean1 + q1*sampleStdDev1 /sqrt(100), sampleMean1 + q2*sampleStdDev1/sqrt(100))
+  ^~~~~~~~~~~
+Problem_1.R:163:19: style: Put spaces around all infix operators.
+c(sampleMean1 + q1*sampleStdDev1 /sqrt(100), sampleMean1 + q2*sampleStdDev1/sqrt(100))
+                 ~^~
+Problem_1.R:163:20: style: Variable and function names should be all lowercase.
+c(sampleMean1 + q1*sampleStdDev1 /sqrt(100), sampleMean1 + q2*sampleStdDev1/sqrt(100))
+                   ^~~~~~~~~~~~~
+Problem_1.R:163:34: style: Put spaces around all infix operators.
+c(sampleMean1 + q1*sampleStdDev1 /sqrt(100), sampleMean1 + q2*sampleStdDev1/sqrt(100))
+                                 ^~
+Problem_1.R:163:46: style: Variable and function names should be all lowercase.
+c(sampleMean1 + q1*sampleStdDev1 /sqrt(100), sampleMean1 + q2*sampleStdDev1/sqrt(100))
+                                             ^~~~~~~~~~~
+Problem_1.R:163:62: style: Put spaces around all infix operators.
+c(sampleMean1 + q1*sampleStdDev1 /sqrt(100), sampleMean1 + q2*sampleStdDev1/sqrt(100))
+                                                            ~^~
+Problem_1.R:163:63: style: Variable and function names should be all lowercase.
+c(sampleMean1 + q1*sampleStdDev1 /sqrt(100), sampleMean1 + q2*sampleStdDev1/sqrt(100))
+                                                              ^~~~~~~~~~~~~
+Problem_1.R:163:76: style: Put spaces around all infix operators.
+c(sampleMean1 + q1*sampleStdDev1 /sqrt(100), sampleMean1 + q2*sampleStdDev1/sqrt(100))
+                                                                          ~^~
+Problem_1.R:166:1: style: lines should not be more than 80 characters.
+c(sampleMean1 + tq1*sampleStdDev1/sqrt(100), sampleMean1 + tq2*sampleStdDev1/sqrt(100))
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Problem_1.R:166:3: style: Variable and function names should be all lowercase.
+c(sampleMean1 + tq1*sampleStdDev1/sqrt(100), sampleMean1 + tq2*sampleStdDev1/sqrt(100))
+  ^~~~~~~~~~~
+Problem_1.R:166:20: style: Put spaces around all infix operators.
+c(sampleMean1 + tq1*sampleStdDev1/sqrt(100), sampleMean1 + tq2*sampleStdDev1/sqrt(100))
+                  ~^~
+Problem_1.R:166:21: style: Variable and function names should be all lowercase.
+c(sampleMean1 + tq1*sampleStdDev1/sqrt(100), sampleMean1 + tq2*sampleStdDev1/sqrt(100))
+                    ^~~~~~~~~~~~~
+Problem_1.R:166:34: style: Put spaces around all infix operators.
+c(sampleMean1 + tq1*sampleStdDev1/sqrt(100), sampleMean1 + tq2*sampleStdDev1/sqrt(100))
+                                ~^~
+Problem_1.R:166:46: style: Variable and function names should be all lowercase.
+c(sampleMean1 + tq1*sampleStdDev1/sqrt(100), sampleMean1 + tq2*sampleStdDev1/sqrt(100))
+                                             ^~~~~~~~~~~
+Problem_1.R:166:63: style: Put spaces around all infix operators.
+c(sampleMean1 + tq1*sampleStdDev1/sqrt(100), sampleMean1 + tq2*sampleStdDev1/sqrt(100))
+                                                             ~^~
+Problem_1.R:166:64: style: Variable and function names should be all lowercase.
+c(sampleMean1 + tq1*sampleStdDev1/sqrt(100), sampleMean1 + tq2*sampleStdDev1/sqrt(100))
+                                                               ^~~~~~~~~~~~~
+Problem_1.R:166:77: style: Put spaces around all infix operators.
+c(sampleMean1 + tq1*sampleStdDev1/sqrt(100), sampleMean1 + tq2*sampleStdDev1/sqrt(100))
+                                                                           ~^~
+Problem_1.R:177:1: style: Variable and function names should be all lowercase.
+sampleMeansBySample <- summarise(groupedSamples,
+^~~~~~~~~~~~~~~~~~~
+Problem_1.R:177:34: style: Variable and function names should be all lowercase.
+sampleMeansBySample <- summarise(groupedSamples,
+                                 ^~~~~~~~~~~~~~
+Problem_1.R:185:1: style: Variable and function names should be all lowercase.
+samplesData <- within(sampleMeansBySample, {
+^~~~~~~~~~~
+Problem_1.R:185:23: style: Variable and function names should be all lowercase.
+samplesData <- within(sampleMeansBySample, {
+                      ^~~~~~~~~~~~~~~~~~~
+Problem_1.R:187:1: style: Trailing whitespace is superfluous.
+  
+^~
+Problem_1.R:189:3: style: Variable and function names should be all lowercase.
+  normalConfIntLower <- sampleMean + q1 * sampleStdDev / sqrt(n)
+  ^~~~~~~~~~~~~~~~~~
+Problem_1.R:189:25: style: Variable and function names should be all lowercase.
+  normalConfIntLower <- sampleMean + q1 * sampleStdDev / sqrt(n)
+                        ^~~~~~~~~~
+Problem_1.R:189:43: style: Variable and function names should be all lowercase.
+  normalConfIntLower <- sampleMean + q1 * sampleStdDev / sqrt(n)
+                                          ^~~~~~~~~~~~
+Problem_1.R:190:1: style: Trailing whitespace is superfluous.
+  
+^~
+Problem_1.R:192:3: style: Variable and function names should be all lowercase.
+  normalConfIntUpper <- sampleMean + q2 * sampleStdDev / sqrt(n)
+  ^~~~~~~~~~~~~~~~~~
+Problem_1.R:192:25: style: Variable and function names should be all lowercase.
+  normalConfIntUpper <- sampleMean + q2 * sampleStdDev / sqrt(n)
+                        ^~~~~~~~~~
+Problem_1.R:192:43: style: Variable and function names should be all lowercase.
+  normalConfIntUpper <- sampleMean + q2 * sampleStdDev / sqrt(n)
+                                          ^~~~~~~~~~~~
+Problem_1.R:193:1: style: Trailing whitespace is superfluous.
+  
+^~
+Problem_1.R:195:3: style: Variable and function names should be all lowercase.
+  tConfIntLower <- sampleMean + qt(0.025, df = n - 1) * sampleStdDev/sqrt(n)
+  ^~~~~~~~~~~~~
+Problem_1.R:195:20: style: Variable and function names should be all lowercase.
+  tConfIntLower <- sampleMean + qt(0.025, df = n - 1) * sampleStdDev/sqrt(n)
+                   ^~~~~~~~~~
+Problem_1.R:195:57: style: Variable and function names should be all lowercase.
+  tConfIntLower <- sampleMean + qt(0.025, df = n - 1) * sampleStdDev/sqrt(n)
+                                                        ^~~~~~~~~~~~
+Problem_1.R:195:69: style: Put spaces around all infix operators.
+  tConfIntLower <- sampleMean + qt(0.025, df = n - 1) * sampleStdDev/sqrt(n)
+                                                                   ~^~
+Problem_1.R:196:3: style: Variable and function names should be all lowercase.
+  tConfIntUpper <- sampleMean + qt(0.975, df = n - 1) * sampleStdDev/sqrt(n)
+  ^~~~~~~~~~~~~
+Problem_1.R:196:20: style: Variable and function names should be all lowercase.
+  tConfIntUpper <- sampleMean + qt(0.975, df = n - 1) * sampleStdDev/sqrt(n)
+                   ^~~~~~~~~~
+Problem_1.R:196:57: style: Variable and function names should be all lowercase.
+  tConfIntUpper <- sampleMean + qt(0.975, df = n - 1) * sampleStdDev/sqrt(n)
+                                                        ^~~~~~~~~~~~
+Problem_1.R:196:69: style: Put spaces around all infix operators.
+  tConfIntUpper <- sampleMean + qt(0.975, df = n - 1) * sampleStdDev/sqrt(n)
+                                                                   ~^~
+Problem_1.R:197:1: style: Trailing whitespace is superfluous.
+  
+^~
+Problem_1.R:199:3: style: Variable and function names should be all lowercase.
+  normalConfIntLength <- normalConfIntUpper - normalConfIntLower
+  ^~~~~~~~~~~~~~~~~~~
+Problem_1.R:199:26: style: Variable and function names should be all lowercase.
+  normalConfIntLength <- normalConfIntUpper - normalConfIntLower
+                         ^~~~~~~~~~~~~~~~~~
+Problem_1.R:199:47: style: Variable and function names should be all lowercase.
+  normalConfIntLength <- normalConfIntUpper - normalConfIntLower
+                                              ^~~~~~~~~~~~~~~~~~
+Problem_1.R:200:3: style: Variable and function names should be all lowercase.
+  tConfIntLength <- tConfIntUpper - tConfIntLower
+  ^~~~~~~~~~~~~~
+Problem_1.R:200:21: style: Variable and function names should be all lowercase.
+  tConfIntLength <- tConfIntUpper - tConfIntLower
+                    ^~~~~~~~~~~~~
+Problem_1.R:200:37: style: Variable and function names should be all lowercase.
+  tConfIntLength <- tConfIntUpper - tConfIntLower
+                                    ^~~~~~~~~~~~~
+Problem_1.R:201:1: style: Trailing whitespace is superfluous.
+  
+^~
+Problem_1.R:206:1: style: Trailing whitespace is superfluous.
+  
+^~
+Problem_1.R:208:1: style: lines should not be more than 80 characters.
+  inNormalConfInt <- populationMean >= normalConfIntLower & populationMean <= normalConfIntUpper
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Problem_1.R:208:3: style: Variable and function names should be all lowercase.
+  inNormalConfInt <- populationMean >= normalConfIntLower & populationMean <= normalConfIntUpper
+  ^~~~~~~~~~~~~~~
+Problem_1.R:208:22: style: Variable and function names should be all lowercase.
+  inNormalConfInt <- populationMean >= normalConfIntLower & populationMean <= normalConfIntUpper
+                     ^~~~~~~~~~~~~~
+Problem_1.R:208:40: style: Variable and function names should be all lowercase.
+  inNormalConfInt <- populationMean >= normalConfIntLower & populationMean <= normalConfIntUpper
+                                       ^~~~~~~~~~~~~~~~~~
+Problem_1.R:208:61: style: Variable and function names should be all lowercase.
+  inNormalConfInt <- populationMean >= normalConfIntLower & populationMean <= normalConfIntUpper
+                                                            ^~~~~~~~~~~~~~
+Problem_1.R:208:79: style: Variable and function names should be all lowercase.
+  inNormalConfInt <- populationMean >= normalConfIntLower & populationMean <= normalConfIntUpper
+                                                                              ^~~~~~~~~~~~~~~~~~
+Problem_1.R:209:1: style: Trailing whitespace is superfluous.
+  
+^~
+Problem_1.R:211:1: style: lines should not be more than 80 characters.
+  inTConfInt <- populationMean >= tConfIntLower & populationMean <= tConfIntUpper
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Problem_1.R:211:3: style: Variable and function names should be all lowercase.
+  inTConfInt <- populationMean >= tConfIntLower & populationMean <= tConfIntUpper
+  ^~~~~~~~~~
+Problem_1.R:211:17: style: Variable and function names should be all lowercase.
+  inTConfInt <- populationMean >= tConfIntLower & populationMean <= tConfIntUpper
+                ^~~~~~~~~~~~~~
+Problem_1.R:211:35: style: Variable and function names should be all lowercase.
+  inTConfInt <- populationMean >= tConfIntLower & populationMean <= tConfIntUpper
+                                  ^~~~~~~~~~~~~
+Problem_1.R:211:51: style: Variable and function names should be all lowercase.
+  inTConfInt <- populationMean >= tConfIntLower & populationMean <= tConfIntUpper
+                                                  ^~~~~~~~~~~~~~
+Problem_1.R:211:69: style: Variable and function names should be all lowercase.
+  inTConfInt <- populationMean >= tConfIntLower & populationMean <= tConfIntUpper
+                                                                    ^~~~~~~~~~~~~
+Problem_1.R:216:15: style: Variable and function names should be all lowercase.
+ggplot(data = samplesData[1:50, ], aes(x = r)) +  # Select the data 
+              ^~~~~~~~~~~
+Problem_1.R:216:68: style: Trailing whitespace is superfluous.
+ggplot(data = samplesData[1:50, ], aes(x = r)) +  # Select the data 
+                                                                   ^
+Problem_1.R:218:28: style: Variable and function names should be all lowercase.
+  geom_errorbar(aes(ymin = normalConfIntLower, ymax = normalConfIntUpper)) +
+                           ^~~~~~~~~~~~~~~~~~
+Problem_1.R:218:55: style: Variable and function names should be all lowercase.
+  geom_errorbar(aes(ymin = normalConfIntLower, ymax = normalConfIntUpper)) +
+                                                      ^~~~~~~~~~~~~~~~~~
+Problem_1.R:220:22: style: Variable and function names should be all lowercase.
+  geom_point(aes(y = sampleMean)) +
+                     ^~~~~~~~~~
+Problem_1.R:222:27: style: Variable and function names should be all lowercase.
+  geom_hline(yintercept = populationMean, linetype = 2, color = 'red') +
+                          ^~~~~~~~~~~~~~
+Problem_1.R:222:65: style: Only use double-quotes.
+  geom_hline(yintercept = populationMean, linetype = 2, color = 'red') +
+                                                                ^~~~~
+Problem_1.R:224:11: style: Only use double-quotes.
+  ggtitle('Estimated (normal) confidence intervals for the population mean') +
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Problem_1.R:226:8: style: Only use double-quotes.
+  xlab('Sample') +
+       ^~~~~~~~
+Problem_1.R:227:1: style: lines should not be more than 80 characters.
+  # Flip the x and y-axis so that the lines appear horizontal instead of vertical
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Problem_1.R:234:9: style: Variable and function names should be all lowercase.
+summary(samplesData)
+        ^~~~~~~~~~~
+Problem_1.R:238:8: style: Variable and function names should be all lowercase.
+t.test(sampleTaxes, mu = populationMean)
+       ^~~~~~~~~~~
+Problem_1.R:238:26: style: Variable and function names should be all lowercase.
+t.test(sampleTaxes, mu = populationMean)
+                         ^~~~~~~~~~~~~~
+Problem_1.R:239:1: style: Variable and function names should be all lowercase.
+testStatistic <- sqrt(100)*(sampleMean1 - populationMean)/sampleStdDev1
+^~~~~~~~~~~~~
+Problem_1.R:239:27: style: Put spaces around all infix operators.
+testStatistic <- sqrt(100)*(sampleMean1 - populationMean)/sampleStdDev1
+                         ~^~
+Problem_1.R:239:28: style: Place a space before left parenthesis, except in a function call.
+testStatistic <- sqrt(100)*(sampleMean1 - populationMean)/sampleStdDev1
+                           ^
+Problem_1.R:239:29: style: Variable and function names should be all lowercase.
+testStatistic <- sqrt(100)*(sampleMean1 - populationMean)/sampleStdDev1
+                            ^~~~~~~~~~~
+Problem_1.R:239:43: style: Variable and function names should be all lowercase.
+testStatistic <- sqrt(100)*(sampleMean1 - populationMean)/sampleStdDev1
+                                          ^~~~~~~~~~~~~~
+Problem_1.R:239:58: style: Put spaces around all infix operators.
+testStatistic <- sqrt(100)*(sampleMean1 - populationMean)/sampleStdDev1
+                                                        ~^~
+Problem_1.R:239:59: style: Variable and function names should be all lowercase.
+testStatistic <- sqrt(100)*(sampleMean1 - populationMean)/sampleStdDev1
+                                                          ^~~~~~~~~~~~~
+Problem_1.R:242:1: style: Variable and function names should be all lowercase.
+criticalLower <- qt(0.025, df = 99)
+^~~~~~~~~~~~~
+Problem_1.R:243:1: style: Variable and function names should be all lowercase.
+criticalUpper <- qt(0.975, df = 99)
+^~~~~~~~~~~~~
+Problem_1.R:244:1: style: Variable and function names should be all lowercase.
+criticalLower
+^~~~~~~~~~~~~
+Problem_1.R:245:1: style: Variable and function names should be all lowercase.
+criticalUpper
+^~~~~~~~~~~~~
+Problem_1.R:248:1: style: Variable and function names should be all lowercase.
+testStatistic
+^~~~~~~~~~~~~
+Problem_1.R:255:2: style: Put spaces around all infix operators.
+2*(1 - pt(abs(testStatistic), df = 99))
+~^~
+Problem_1.R:255:3: style: Place a space before left parenthesis, except in a function call.
+2*(1 - pt(abs(testStatistic), df = 99))
+  ^
+Problem_1.R:255:15: style: Variable and function names should be all lowercase.
+2*(1 - pt(abs(testStatistic), df = 99))
+              ^~~~~~~~~~~~~
+Problem_1.R:263:12: style: Variable and function names should be all lowercase.
+str(t.test(sampleTaxes, mu = populationMean))
+           ^~~~~~~~~~~
+Problem_1.R:263:30: style: Variable and function names should be all lowercase.
+str(t.test(sampleTaxes, mu = populationMean))
+                             ^~~~~~~~~~~~~~
+Problem_1.R:269:1: style: Variable and function names should be all lowercase.
+testH0 <- function(x) {
+^~~~~~
+Problem_1.R:270:3: style: Variable and function names should be all lowercase.
+  testResult <- t.test(x, mu = populationMean)
+  ^~~~~~~~~~
+Problem_1.R:270:32: style: Variable and function names should be all lowercase.
+  testResult <- t.test(x, mu = populationMean)
+                               ^~~~~~~~~~~~~~
+Problem_1.R:270:32: warning: no visible binding for global variable ‘populationMean’
+  testResult <- t.test(x, mu = populationMean)
+                               ^~~~~~~~~~~~~~
+Problem_1.R:271:10: style: Variable and function names should be all lowercase.
+  return(testResult$p.value < 0.05)
+         ^~~~~~~~~~
+Problem_1.R:278:1: style: Variable and function names should be all lowercase.
+samplesDataTest <- summarise(
+^~~~~~~~~~~~~~~
+Problem_1.R:279:3: style: Variable and function names should be all lowercase.
+  groupedSamples,
+  ^~~~~~~~~~~~~~
+Problem_1.R:280:20: style: Variable and function names should be all lowercase.
+  falseRejection = testH0(taxes)
+                   ^~~~~~
+Problem_1.R:286:9: style: Variable and function names should be all lowercase.
+summary(samplesDataTest)
+        ^~~~~~~~~~~~~~~
+> 
+> 
